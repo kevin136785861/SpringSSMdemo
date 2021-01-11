@@ -32,7 +32,7 @@
         <div class="card-body login-card-body">
             <p class="login-box-msg">帐户登录</p>
 
-            <form action="${pageContext.request.contextPath}/user?method=login" method="post">
+            <form action="${pageContext.request.contextPath}/login" method="post">
                 <%--用户名/邮箱--%>
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="用户名" name="username">
