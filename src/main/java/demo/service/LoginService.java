@@ -1,7 +1,8 @@
 package demo.service;
 
-import demo.domain.UserManage;
+
+import demo.domain.WhitelistSetting;
 
 public interface LoginService {
-    UserManage login(String username,String password);
+    WhitelistSetting login(String username, String password);
 }

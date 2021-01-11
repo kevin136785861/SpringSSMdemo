@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -147,10 +148,10 @@
             <!-- 侧边栏用户面板（可选） -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img id="login_user_avatar" src="${pageContext.request.contextPath}${sessionScope.loginUser.imgUrl}" class="img-circle elevation-2" alt="用户头像">
+                    <img id="login_user_avatar" src="" class="img-circle elevation-2" alt="用户头像">
                 </div>
                 <div class="info">
-                    <a href="${pageContext.request.contextPath}/pages/modifyAvatar.jsp" class="d-block">${sessionScope.loginUser.username}</a>
+                    <a href="${pageContext.request.contextPath}/pages/modifyAvatar.jsp" class="d-block"></a>
                 </div>
             </div>
 
@@ -183,6 +184,7 @@
                         </ul>
                     </li>
                 </ul>
+                <c:if test="${sessionScope.loginUser.roleId == 2}">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <!-- 使用 .nav-icon 类添加图标，
                          或使用 font-awesome 或其他任何图标字体库 -->
@@ -190,7 +192,7 @@
                         <a href="#" class="nav-link link-1st">
                             <i class="nav-icon fas fa-edit"></i>
                             <p>
-                                员工管理
+                                学生管理
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
@@ -198,18 +200,48 @@
                             <li class="nav-item">
                                 <a href="${pageContext.request.contextPath}/emp?method=list" class="nav-link link-2nd">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>员工列表</p>
+                                    <p>学生列表</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link link-2nd">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>添加员工</p>
+                                    <p>添加学生</p>
                                 </a>
                             </li>
                         </ul>
                     </li>
                 </ul>
+                </c:if>
+                <c:if test="${sessionScope.loginUser.roleId > 2}">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <!-- 使用 .nav-icon 类添加图标，
+                             或使用 font-awesome 或其他任何图标字体库 -->
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link link-1st">
+                                <i class="nav-icon fas fa-edit"></i>
+                                <p>
+                                    寒衣管理
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="${pageContext.request.contextPath}/emp?method=list" class="nav-link link-2nd">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>寒衣列表</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link link-2nd">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>添加寒衣</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </c:if>
             </nav>
             <!-- /.sidebar-menu -->
         </div>
