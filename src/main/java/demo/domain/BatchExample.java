@@ -5,14 +5,14 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
-public class BatchSettingExample {
+public class BatchExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public BatchSettingExample() {
+    public BatchExample() {
         oredCriteria = new ArrayList<>();
     }
 

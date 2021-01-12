@@ -2,7 +2,7 @@ package demo.domain;
 
 import java.util.Date;
 
-public class BatchSetting {
+public class Batch {
     private Long id;
 
     private String name;
