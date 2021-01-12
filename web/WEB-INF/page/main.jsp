@@ -144,12 +144,4 @@
 </body>
 </html>
 <script>
-    var id = layer.alert("删除成功",{
-        icon: 6,
-        closeBtn: 2,
-        shade: [0.3, 'red'],
-        shadeClose:true,
-        time: 1000
-    })
-    console.info(id)
 </script>

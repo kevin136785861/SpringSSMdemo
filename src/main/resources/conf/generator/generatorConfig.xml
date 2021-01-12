@@ -43,7 +43,14 @@
         <table tableName="v_user_manage" domainObjectName="UserManage"/>
         <table tableName="wcss_application" domainObjectName="ApplicationInfo"/>
         <table tableName="wcss_audit_history" domainObjectName="AuditHistory"/>
-        <table tableName="wcss_batch_setting" domainObjectName="Batch"/>
+        <table tableName="wcss_batch_setting" domainObjectName="Batch">
+            <columnOverride column="is_deleted" javaType="java.lang.Integer" property="deleted"/>
+            <columnOverride column="active" javaType="java.lang.Integer"/>
+            <columnOverride column="application_start_date" javaType="java.time.LocalDate"/>
+            <columnOverride column="application_end_date" javaType="java.time.LocalDate"/>
+            <columnOverride column="register_start_date" javaType="java.time.LocalDate"/>
+            <columnOverride column="register_end_date" javaType="java.time.LocalDate"/>
+        </table>
         <table tableName="wcss_product" domainObjectName="ProductInfo"/>
         <table tableName="wcss_product_image" domainObjectName="ProductImage"/>
         <table tableName="wcss_role_flow_setting" domainObjectName="RoleFlow"/>

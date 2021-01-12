@@ -9,7 +9,7 @@
     <result column="register_start_date" jdbcType="DATE" property="registerStartDate" />
     <result column="register_end_date" jdbcType="DATE" property="registerEndDate" />
     <result column="difficulty_level" jdbcType="VARCHAR" property="difficultyLevel" />
-    <result column="is_deleted" jdbcType="BIT" property="isDeleted" />
+    <result column="is_deleted" jdbcType="BIT" property="deleted" />
     <result column="active" jdbcType="BIT" property="active" />
     <result column="gmt_created" jdbcType="TIMESTAMP" property="gmtCreated" />
     <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
@@ -113,7 +113,7 @@
       gmt_created, gmt_modified)
     values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{applicationStartDate,jdbcType=DATE}, 
       #{applicationEndDate,jdbcType=DATE}, #{registerStartDate,jdbcType=DATE}, #{registerEndDate,jdbcType=DATE}, 
-      #{difficultyLevel,jdbcType=VARCHAR}, #{isDeleted,jdbcType=BIT}, #{active,jdbcType=BIT}, 
+      #{difficultyLevel,jdbcType=VARCHAR}, #{deleted,jdbcType=BIT}, #{active,jdbcType=BIT}, 
       #{gmtCreated,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="demo.domain.Batch">
@@ -140,7 +140,7 @@
       <if test="difficultyLevel != null">
         difficulty_level,
       </if>
-      <if test="isDeleted != null">
+      <if test="deleted != null">
         is_deleted,
       </if>
       <if test="active != null">
@@ -175,8 +175,8 @@
       <if test="difficultyLevel != null">
         #{difficultyLevel,jdbcType=VARCHAR},
       </if>
-      <if test="isDeleted != null">
-        #{isDeleted,jdbcType=BIT},
+      <if test="deleted != null">
+        #{deleted,jdbcType=BIT},
       </if>
       <if test="active != null">
         #{active,jdbcType=BIT},
@@ -219,8 +219,8 @@
       <if test="record.difficultyLevel != null">
         difficulty_level = #{record.difficultyLevel,jdbcType=VARCHAR},
       </if>
-      <if test="record.isDeleted != null">
-        is_deleted = #{record.isDeleted,jdbcType=BIT},
+      <if test="record.deleted != null">
+        is_deleted = #{record.deleted,jdbcType=BIT},
       </if>
       <if test="record.active != null">
         active = #{record.active,jdbcType=BIT},
@@ -245,7 +245,7 @@
       register_start_date = #{record.registerStartDate,jdbcType=DATE},
       register_end_date = #{record.registerEndDate,jdbcType=DATE},
       difficulty_level = #{record.difficultyLevel,jdbcType=VARCHAR},
-      is_deleted = #{record.isDeleted,jdbcType=BIT},
+      is_deleted = #{record.deleted,jdbcType=BIT},
       active = #{record.active,jdbcType=BIT},
       gmt_created = #{record.gmtCreated,jdbcType=TIMESTAMP},
       gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP}
@@ -274,8 +274,8 @@
       <if test="difficultyLevel != null">
         difficulty_level = #{difficultyLevel,jdbcType=VARCHAR},
       </if>
-      <if test="isDeleted != null">
-        is_deleted = #{isDeleted,jdbcType=BIT},
+      <if test="deleted != null">
+        is_deleted = #{deleted,jdbcType=BIT},
       </if>
       <if test="active != null">
         active = #{active,jdbcType=BIT},
@@ -297,7 +297,7 @@
       register_start_date = #{registerStartDate,jdbcType=DATE},
       register_end_date = #{registerEndDate,jdbcType=DATE},
       difficulty_level = #{difficultyLevel,jdbcType=VARCHAR},
-      is_deleted = #{isDeleted,jdbcType=BIT},
+      is_deleted = #{deleted,jdbcType=BIT},
       active = #{active,jdbcType=BIT},
       gmt_created = #{gmtCreated,jdbcType=TIMESTAMP},
       gmt_modified = #{gmtModified,jdbcType=TIMESTAMP}

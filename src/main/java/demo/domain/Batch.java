@@ -1,25 +1,29 @@
 package demo.domain;
 
+import demo.domain.extem.BatchExten;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDate;
 import java.util.Date;
 
-public class Batch {
+public class Batch extends BatchExten {
     private Long id;
 
     private String name;
-
-    private Date applicationStartDate;
-
-    private Date applicationEndDate;
-
-    private Date registerStartDate;
-
-    private Date registerEndDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate applicationStartDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate applicationEndDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate registerStartDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate registerEndDate;
 
     private String difficultyLevel;
 
-    private Boolean isDeleted;
+    private Integer deleted;
 
-    private Boolean active;
+    private Integer active;
 
     private Date gmtCreated;
 
@@ -27,6 +31,23 @@ public class Batch {
 
     public Long getId() {
         return id;
+    }
+
+    @Override
+    public String toString() {
+        return "Batch{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", applicationStartDate=" + applicationStartDate +
+                ", applicationEndDate=" + applicationEndDate +
+                ", registerStartDate=" + registerStartDate +
+                ", registerEndDate=" + registerEndDate +
+                ", difficultyLevel='" + difficultyLevel + '\'' +
+                ", deleted=" + deleted +
+                ", active=" + active +
+                ", gmtCreated=" + gmtCreated +
+                ", gmtModified=" + gmtModified +
+                '}';
     }
 
     public void setId(Long id) {
@@ -41,35 +62,35 @@ public class Batch {
         this.name = name == null ? null : name.trim();
     }
 
-    public Date getApplicationStartDate() {
+    public LocalDate getApplicationStartDate() {
         return applicationStartDate;
     }
 
-    public void setApplicationStartDate(Date applicationStartDate) {
+    public void setApplicationStartDate(LocalDate applicationStartDate) {
         this.applicationStartDate = applicationStartDate;
     }
 
-    public Date getApplicationEndDate() {
+    public LocalDate getApplicationEndDate() {
         return applicationEndDate;
     }
 
-    public void setApplicationEndDate(Date applicationEndDate) {
+    public void setApplicationEndDate(LocalDate applicationEndDate) {
         this.applicationEndDate = applicationEndDate;
     }
 
-    public Date getRegisterStartDate() {
+    public LocalDate getRegisterStartDate() {
         return registerStartDate;
     }
 
-    public void setRegisterStartDate(Date registerStartDate) {
+    public void setRegisterStartDate(LocalDate registerStartDate) {
         this.registerStartDate = registerStartDate;
     }
 
-    public Date getRegisterEndDate() {
+    public LocalDate getRegisterEndDate() {
         return registerEndDate;
     }
 
-    public void setRegisterEndDate(Date registerEndDate) {
+    public void setRegisterEndDate(LocalDate registerEndDate) {
         this.registerEndDate = registerEndDate;
     }
 
@@ -81,19 +102,19 @@ public class Batch {
         this.difficultyLevel = difficultyLevel == null ? null : difficultyLevel.trim();
     }
 
-    public Boolean getIsDeleted() {
-        return isDeleted;
+    public Integer getDeleted() {
+        return deleted;
     }
 
-    public void setIsDeleted(Boolean isDeleted) {
-        this.isDeleted = isDeleted;
+    public void setDeleted(Integer deleted) {
+        this.deleted = deleted;
     }
 
-    public Boolean getActive() {
+    public Integer getActive() {
         return active;
     }
 
-    public void setActive(Boolean active) {
+    public void setActive(Integer active) {
         this.active = active;
     }
 

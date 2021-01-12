@@ -1,8 +1,8 @@
 package demo.domain;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 public class BatchExample {
@@ -104,32 +104,6 @@ public class BatchExample {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
-            if (value == null) {
-                throw new RuntimeException("Value for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value.getTime()), property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
-            if (values == null || values.size() == 0) {
-                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
-            }
-            List<java.sql.Date> dateList = new ArrayList<>();
-            Iterator<Date> iter = values.iterator();
-            while (iter.hasNext()) {
-                dateList.add(new java.sql.Date(iter.next().getTime()));
-            }
-            addCriterion(condition, dateList, property);
-        }
-
-        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
-            if (value1 == null || value2 == null) {
-                throw new RuntimeException("Between values for " + property + " cannot be null");
-            }
-            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
         }
 
         public Criteria andIdIsNull() {
@@ -272,53 +246,53 @@ public class BatchExample {
             return (Criteria) this;
         }
 
-        public Criteria andApplicationStartDateEqualTo(Date value) {
-            addCriterionForJDBCDate("application_start_date =", value, "applicationStartDate");
+        public Criteria andApplicationStartDateEqualTo(LocalDate value) {
+            addCriterion("application_start_date =", value, "applicationStartDate");
             return (Criteria) this;
         }
 
-        public Criteria andApplicationStartDateNotEqualTo(Date value) {
-            addCriterionForJDBCDate("application_start_date <>", value, "applicationStartDate");
+        public Criteria andApplicationStartDateNotEqualTo(LocalDate value) {
+            addCriterion("application_start_date <>", value, "applicationStartDate");
             return (Criteria) this;
         }
 
-        public Criteria andApplicationStartDateGreaterThan(Date value) {
-            addCriterionForJDBCDate("application_start_date >", value, "applicationStartDate");
+        public Criteria andApplicationStartDateGreaterThan(LocalDate value) {
+            addCriterion("application_start_date >", value, "applicationStartDate");
             return (Criteria) this;
         }
 
-        public Criteria andApplicationStartDateGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("application_start_date >=", value, "applicationStartDate");
+        public Criteria andApplicationStartDateGreaterThanOrEqualTo(LocalDate value) {
+            addCriterion("application_start_date >=", value, "applicationStartDate");
             return (Criteria) this;
         }
 
-        public Criteria andApplicationStartDateLessThan(Date value) {
-            addCriterionForJDBCDate("application_start_date <", value, "applicationStartDate");
+        public Criteria andApplicationStartDateLessThan(LocalDate value) {
+            addCriterion("application_start_date <", value, "applicationStartDate");
             return (Criteria) this;
         }
 
-        public Criteria andApplicationStartDateLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("application_start_date <=", value, "applicationStartDate");
+        public Criteria andApplicationStartDateLessThanOrEqualTo(LocalDate value) {
+            addCriterion("application_start_date <=", value, "applicationStartDate");
             return (Criteria) this;
         }
 
-        public Criteria andApplicationStartDateIn(List<Date> values) {
-            addCriterionForJDBCDate("application_start_date in", values, "applicationStartDate");
+        public Criteria andApplicationStartDateIn(List<LocalDate> values) {
+            addCriterion("application_start_date in", values, "applicationStartDate");
             return (Criteria) this;
         }
 
-        public Criteria andApplicationStartDateNotIn(List<Date> values) {
-            addCriterionForJDBCDate("application_start_date not in", values, "applicationStartDate");
+        public Criteria andApplicationStartDateNotIn(List<LocalDate> values) {
+            addCriterion("application_start_date not in", values, "applicationStartDate");
             return (Criteria) this;
         }
 
-        public Criteria andApplicationStartDateBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("application_start_date between", value1, value2, "applicationStartDate");
+        public Criteria andApplicationStartDateBetween(LocalDate value1, LocalDate value2) {
+            addCriterion("application_start_date between", value1, value2, "applicationStartDate");
             return (Criteria) this;
         }
 
-        public Criteria andApplicationStartDateNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("application_start_date not between", value1, value2, "applicationStartDate");
+        public Criteria andApplicationStartDateNotBetween(LocalDate value1, LocalDate value2) {
+            addCriterion("application_start_date not between", value1, value2, "applicationStartDate");
             return (Criteria) this;
         }
 
@@ -332,53 +306,53 @@ public class BatchExample {
             return (Criteria) this;
         }
 
-        public Criteria andApplicationEndDateEqualTo(Date value) {
-            addCriterionForJDBCDate("application_end_date =", value, "applicationEndDate");
+        public Criteria andApplicationEndDateEqualTo(LocalDate value) {
+            addCriterion("application_end_date =", value, "applicationEndDate");
             return (Criteria) this;
         }
 
-        public Criteria andApplicationEndDateNotEqualTo(Date value) {
-            addCriterionForJDBCDate("application_end_date <>", value, "applicationEndDate");
+        public Criteria andApplicationEndDateNotEqualTo(LocalDate value) {
+            addCriterion("application_end_date <>", value, "applicationEndDate");
             return (Criteria) this;
         }
 
-        public Criteria andApplicationEndDateGreaterThan(Date value) {
-            addCriterionForJDBCDate("application_end_date >", value, "applicationEndDate");
+        public Criteria andApplicationEndDateGreaterThan(LocalDate value) {
+            addCriterion("application_end_date >", value, "applicationEndDate");
             return (Criteria) this;
         }
 
-        public Criteria andApplicationEndDateGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("application_end_date >=", value, "applicationEndDate");
+        public Criteria andApplicationEndDateGreaterThanOrEqualTo(LocalDate value) {
+            addCriterion("application_end_date >=", value, "applicationEndDate");
             return (Criteria) this;
         }
 
-        public Criteria andApplicationEndDateLessThan(Date value) {
-            addCriterionForJDBCDate("application_end_date <", value, "applicationEndDate");
+        public Criteria andApplicationEndDateLessThan(LocalDate value) {
+            addCriterion("application_end_date <", value, "applicationEndDate");
             return (Criteria) this;
         }
 
-        public Criteria andApplicationEndDateLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("application_end_date <=", value, "applicationEndDate");
+        public Criteria andApplicationEndDateLessThanOrEqualTo(LocalDate value) {
+            addCriterion("application_end_date <=", value, "applicationEndDate");
             return (Criteria) this;
         }
 
-        public Criteria andApplicationEndDateIn(List<Date> values) {
-            addCriterionForJDBCDate("application_end_date in", values, "applicationEndDate");
+        public Criteria andApplicationEndDateIn(List<LocalDate> values) {
+            addCriterion("application_end_date in", values, "applicationEndDate");
             return (Criteria) this;
         }
 
-        public Criteria andApplicationEndDateNotIn(List<Date> values) {
-            addCriterionForJDBCDate("application_end_date not in", values, "applicationEndDate");
+        public Criteria andApplicationEndDateNotIn(List<LocalDate> values) {
+            addCriterion("application_end_date not in", values, "applicationEndDate");
             return (Criteria) this;
         }
 
-        public Criteria andApplicationEndDateBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("application_end_date between", value1, value2, "applicationEndDate");
+        public Criteria andApplicationEndDateBetween(LocalDate value1, LocalDate value2) {
+            addCriterion("application_end_date between", value1, value2, "applicationEndDate");
             return (Criteria) this;
         }
 
-        public Criteria andApplicationEndDateNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("application_end_date not between", value1, value2, "applicationEndDate");
+        public Criteria andApplicationEndDateNotBetween(LocalDate value1, LocalDate value2) {
+            addCriterion("application_end_date not between", value1, value2, "applicationEndDate");
             return (Criteria) this;
         }
 
@@ -392,53 +366,53 @@ public class BatchExample {
             return (Criteria) this;
         }
 
-        public Criteria andRegisterStartDateEqualTo(Date value) {
-            addCriterionForJDBCDate("register_start_date =", value, "registerStartDate");
+        public Criteria andRegisterStartDateEqualTo(LocalDate value) {
+            addCriterion("register_start_date =", value, "registerStartDate");
             return (Criteria) this;
         }
 
-        public Criteria andRegisterStartDateNotEqualTo(Date value) {
-            addCriterionForJDBCDate("register_start_date <>", value, "registerStartDate");
+        public Criteria andRegisterStartDateNotEqualTo(LocalDate value) {
+            addCriterion("register_start_date <>", value, "registerStartDate");
             return (Criteria) this;
         }
 
-        public Criteria andRegisterStartDateGreaterThan(Date value) {
-            addCriterionForJDBCDate("register_start_date >", value, "registerStartDate");
+        public Criteria andRegisterStartDateGreaterThan(LocalDate value) {
+            addCriterion("register_start_date >", value, "registerStartDate");
             return (Criteria) this;
         }
 
-        public Criteria andRegisterStartDateGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("register_start_date >=", value, "registerStartDate");
+        public Criteria andRegisterStartDateGreaterThanOrEqualTo(LocalDate value) {
+            addCriterion("register_start_date >=", value, "registerStartDate");
             return (Criteria) this;
         }
 
-        public Criteria andRegisterStartDateLessThan(Date value) {
-            addCriterionForJDBCDate("register_start_date <", value, "registerStartDate");
+        public Criteria andRegisterStartDateLessThan(LocalDate value) {
+            addCriterion("register_start_date <", value, "registerStartDate");
             return (Criteria) this;
         }
 
-        public Criteria andRegisterStartDateLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("register_start_date <=", value, "registerStartDate");
+        public Criteria andRegisterStartDateLessThanOrEqualTo(LocalDate value) {
+            addCriterion("register_start_date <=", value, "registerStartDate");
             return (Criteria) this;
         }
 
-        public Criteria andRegisterStartDateIn(List<Date> values) {
-            addCriterionForJDBCDate("register_start_date in", values, "registerStartDate");
+        public Criteria andRegisterStartDateIn(List<LocalDate> values) {
+            addCriterion("register_start_date in", values, "registerStartDate");
             return (Criteria) this;
         }
 
-        public Criteria andRegisterStartDateNotIn(List<Date> values) {
-            addCriterionForJDBCDate("register_start_date not in", values, "registerStartDate");
+        public Criteria andRegisterStartDateNotIn(List<LocalDate> values) {
+            addCriterion("register_start_date not in", values, "registerStartDate");
             return (Criteria) this;
         }
 
-        public Criteria andRegisterStartDateBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("register_start_date between", value1, value2, "registerStartDate");
+        public Criteria andRegisterStartDateBetween(LocalDate value1, LocalDate value2) {
+            addCriterion("register_start_date between", value1, value2, "registerStartDate");
             return (Criteria) this;
         }
 
-        public Criteria andRegisterStartDateNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("register_start_date not between", value1, value2, "registerStartDate");
+        public Criteria andRegisterStartDateNotBetween(LocalDate value1, LocalDate value2) {
+            addCriterion("register_start_date not between", value1, value2, "registerStartDate");
             return (Criteria) this;
         }
 
@@ -452,53 +426,53 @@ public class BatchExample {
             return (Criteria) this;
         }
 
-        public Criteria andRegisterEndDateEqualTo(Date value) {
-            addCriterionForJDBCDate("register_end_date =", value, "registerEndDate");
+        public Criteria andRegisterEndDateEqualTo(LocalDate value) {
+            addCriterion("register_end_date =", value, "registerEndDate");
             return (Criteria) this;
         }
 
-        public Criteria andRegisterEndDateNotEqualTo(Date value) {
-            addCriterionForJDBCDate("register_end_date <>", value, "registerEndDate");
+        public Criteria andRegisterEndDateNotEqualTo(LocalDate value) {
+            addCriterion("register_end_date <>", value, "registerEndDate");
             return (Criteria) this;
         }
 
-        public Criteria andRegisterEndDateGreaterThan(Date value) {
-            addCriterionForJDBCDate("register_end_date >", value, "registerEndDate");
+        public Criteria andRegisterEndDateGreaterThan(LocalDate value) {
+            addCriterion("register_end_date >", value, "registerEndDate");
             return (Criteria) this;
         }
 
-        public Criteria andRegisterEndDateGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("register_end_date >=", value, "registerEndDate");
+        public Criteria andRegisterEndDateGreaterThanOrEqualTo(LocalDate value) {
+            addCriterion("register_end_date >=", value, "registerEndDate");
             return (Criteria) this;
         }
 
-        public Criteria andRegisterEndDateLessThan(Date value) {
-            addCriterionForJDBCDate("register_end_date <", value, "registerEndDate");
+        public Criteria andRegisterEndDateLessThan(LocalDate value) {
+            addCriterion("register_end_date <", value, "registerEndDate");
             return (Criteria) this;
         }
 
-        public Criteria andRegisterEndDateLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCDate("register_end_date <=", value, "registerEndDate");
+        public Criteria andRegisterEndDateLessThanOrEqualTo(LocalDate value) {
+            addCriterion("register_end_date <=", value, "registerEndDate");
             return (Criteria) this;
         }
 
-        public Criteria andRegisterEndDateIn(List<Date> values) {
-            addCriterionForJDBCDate("register_end_date in", values, "registerEndDate");
+        public Criteria andRegisterEndDateIn(List<LocalDate> values) {
+            addCriterion("register_end_date in", values, "registerEndDate");
             return (Criteria) this;
         }
 
-        public Criteria andRegisterEndDateNotIn(List<Date> values) {
-            addCriterionForJDBCDate("register_end_date not in", values, "registerEndDate");
+        public Criteria andRegisterEndDateNotIn(List<LocalDate> values) {
+            addCriterion("register_end_date not in", values, "registerEndDate");
             return (Criteria) this;
         }
 
-        public Criteria andRegisterEndDateBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("register_end_date between", value1, value2, "registerEndDate");
+        public Criteria andRegisterEndDateBetween(LocalDate value1, LocalDate value2) {
+            addCriterion("register_end_date between", value1, value2, "registerEndDate");
             return (Criteria) this;
         }
 
-        public Criteria andRegisterEndDateNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCDate("register_end_date not between", value1, value2, "registerEndDate");
+        public Criteria andRegisterEndDateNotBetween(LocalDate value1, LocalDate value2) {
+            addCriterion("register_end_date not between", value1, value2, "registerEndDate");
             return (Criteria) this;
         }
 
@@ -572,63 +546,63 @@ public class BatchExample {
             return (Criteria) this;
         }
 
-        public Criteria andIsDeletedIsNull() {
+        public Criteria andDeletedIsNull() {
             addCriterion("is_deleted is null");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeletedIsNotNull() {
+        public Criteria andDeletedIsNotNull() {
             addCriterion("is_deleted is not null");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeletedEqualTo(Boolean value) {
-            addCriterion("is_deleted =", value, "isDeleted");
+        public Criteria andDeletedEqualTo(Integer value) {
+            addCriterion("is_deleted =", value, "deleted");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeletedNotEqualTo(Boolean value) {
-            addCriterion("is_deleted <>", value, "isDeleted");
+        public Criteria andDeletedNotEqualTo(Integer value) {
+            addCriterion("is_deleted <>", value, "deleted");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeletedGreaterThan(Boolean value) {
-            addCriterion("is_deleted >", value, "isDeleted");
+        public Criteria andDeletedGreaterThan(Integer value) {
+            addCriterion("is_deleted >", value, "deleted");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeletedGreaterThanOrEqualTo(Boolean value) {
-            addCriterion("is_deleted >=", value, "isDeleted");
+        public Criteria andDeletedGreaterThanOrEqualTo(Integer value) {
+            addCriterion("is_deleted >=", value, "deleted");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeletedLessThan(Boolean value) {
-            addCriterion("is_deleted <", value, "isDeleted");
+        public Criteria andDeletedLessThan(Integer value) {
+            addCriterion("is_deleted <", value, "deleted");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeletedLessThanOrEqualTo(Boolean value) {
-            addCriterion("is_deleted <=", value, "isDeleted");
+        public Criteria andDeletedLessThanOrEqualTo(Integer value) {
+            addCriterion("is_deleted <=", value, "deleted");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeletedIn(List<Boolean> values) {
-            addCriterion("is_deleted in", values, "isDeleted");
+        public Criteria andDeletedIn(List<Integer> values) {
+            addCriterion("is_deleted in", values, "deleted");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeletedNotIn(List<Boolean> values) {
-            addCriterion("is_deleted not in", values, "isDeleted");
+        public Criteria andDeletedNotIn(List<Integer> values) {
+            addCriterion("is_deleted not in", values, "deleted");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeletedBetween(Boolean value1, Boolean value2) {
-            addCriterion("is_deleted between", value1, value2, "isDeleted");
+        public Criteria andDeletedBetween(Integer value1, Integer value2) {
+            addCriterion("is_deleted between", value1, value2, "deleted");
             return (Criteria) this;
         }
 
-        public Criteria andIsDeletedNotBetween(Boolean value1, Boolean value2) {
-            addCriterion("is_deleted not between", value1, value2, "isDeleted");
+        public Criteria andDeletedNotBetween(Integer value1, Integer value2) {
+            addCriterion("is_deleted not between", value1, value2, "deleted");
             return (Criteria) this;
         }
 
@@ -642,52 +616,52 @@ public class BatchExample {
             return (Criteria) this;
         }
 
-        public Criteria andActiveEqualTo(Boolean value) {
+        public Criteria andActiveEqualTo(Integer value) {
             addCriterion("active =", value, "active");
             return (Criteria) this;
         }
 
-        public Criteria andActiveNotEqualTo(Boolean value) {
+        public Criteria andActiveNotEqualTo(Integer value) {
             addCriterion("active <>", value, "active");
             return (Criteria) this;
         }
 
-        public Criteria andActiveGreaterThan(Boolean value) {
+        public Criteria andActiveGreaterThan(Integer value) {
             addCriterion("active >", value, "active");
             return (Criteria) this;
         }
 
-        public Criteria andActiveGreaterThanOrEqualTo(Boolean value) {
+        public Criteria andActiveGreaterThanOrEqualTo(Integer value) {
             addCriterion("active >=", value, "active");
             return (Criteria) this;
         }
 
-        public Criteria andActiveLessThan(Boolean value) {
+        public Criteria andActiveLessThan(Integer value) {
             addCriterion("active <", value, "active");
             return (Criteria) this;
         }
 
-        public Criteria andActiveLessThanOrEqualTo(Boolean value) {
+        public Criteria andActiveLessThanOrEqualTo(Integer value) {
             addCriterion("active <=", value, "active");
             return (Criteria) this;
         }
 
-        public Criteria andActiveIn(List<Boolean> values) {
+        public Criteria andActiveIn(List<Integer> values) {
             addCriterion("active in", values, "active");
             return (Criteria) this;
         }
 
-        public Criteria andActiveNotIn(List<Boolean> values) {
+        public Criteria andActiveNotIn(List<Integer> values) {
             addCriterion("active not in", values, "active");
             return (Criteria) this;
         }
 
-        public Criteria andActiveBetween(Boolean value1, Boolean value2) {
+        public Criteria andActiveBetween(Integer value1, Integer value2) {
             addCriterion("active between", value1, value2, "active");
             return (Criteria) this;
         }
 
-        public Criteria andActiveNotBetween(Boolean value1, Boolean value2) {
+        public Criteria andActiveNotBetween(Integer value1, Integer value2) {
             addCriterion("active not between", value1, value2, "active");
             return (Criteria) this;
         }
