@@ -80,18 +80,4 @@ public class UserManage {
     public void setOrganizationtype(Byte organizationtype) {
         this.organizationtype = organizationtype;
     }
-
-    @Override
-    public String toString() {
-        return "UserManage{" +
-                "username='" + username + '\'' +
-                ", usersn='" + usersn + '\'' +
-                ", organizationid=" + organizationid +
-                ", organizationname='" + organizationname + '\'' +
-                ", organizationsn='" + organizationsn + '\'' +
-                ", roleid=" + roleid +
-                ", rolename='" + rolename + '\'' +
-                ", organizationtype=" + organizationtype +
-                '}';
-    }
 }

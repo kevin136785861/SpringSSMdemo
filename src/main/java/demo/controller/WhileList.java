@@ -1,7 +1,7 @@
 package demo.controller;
 
-import demo.domain.UserManage;
-import demo.domain.WhitelistSetting;
+
+import demo.domain.Whitelist;
 import demo.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,7 +19,7 @@ public class WhileList {
     public String login(@RequestParam(value = "username")String username, @RequestParam(value = "password")String password) {
         System.out.println(username);
         System.out.println(password);
-        WhitelistSetting login = loginService.login(username, password);
+        Whitelist login = loginService.login(username, password);
         System.out.println(login);
         setLoginUser(login);
         return "main";
