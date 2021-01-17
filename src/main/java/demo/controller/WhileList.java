@@ -22,6 +22,6 @@ public class WhileList {
         Whitelist login = loginService.login(username, password);
         System.out.println(login);
         setLoginUser(login);
-        return "batch";
+        return "forward:/batch/list";
     }
 }

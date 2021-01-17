@@ -61,14 +61,17 @@
                         <!--学生表格-->
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">所有学生</h3>
+                                <h3 class="card-title">
+                                    <form action="${pageContext.request.contextPath}/batch/selectName" method="post">
+                                    <input  type="text" placeholder="请输入"  name="search" id="search" />
+                                    <input type="submit" id="subsearch" name="submit" value="提交" />
+                                </form></h3>
                                 <div class="card-tools">
                                     <div class="input-group input-group-sm" style="width: 150px;">
                                         <button type="button" class="btn btn-primary btn-sm btn_primary col-sm-10 "
                                                 id="addOne">添&nbsp&nbsp加&nbsp&nbsp批&nbsp&nbsp次
                                         </button>
                                     </div>
-
                                 </div>
                             </div>
                             <!-- /.card-header -->
@@ -78,18 +81,19 @@
                                     <tr>
                                         <th>序号</th>
                                         <th>编号</th>
-                                        <th>姓名</th>
+                                        <th>批次名</th>
                                         <th>申请开始时间</th>
                                         <th>申请结束时间</th>
                                         <th>选衣开始时间</th>
                                         <th>选衣结束时间</th>
                                         <th>困难等级</th>
+                                        <th>状态</th>
                                         <th>操作</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                         <c:forEach items="${sessionScope.batchPageInfo.list}" var="batch" varStatus="status">
-                                    <tr>
+                                    <tr id="${batch.id}">
                                         <td>${status.count}</td>
                                         <td>${batch.id}</td>
                                         <td>${batch.name}</td>
@@ -97,12 +101,22 @@
                                         <td>${batch.applicationEndDate}</td>
                                         <td>${batch.registerStartDate}</td>
                                         <td>${batch.registerEndDate}</td>
-                                        <td>${batch.difficultyName}</td>
+                                        <td difficultyValue="${batch.difficultyLevel}">${batch.difficultyName}</td>
+                                        <td>${batch.active==0?"已关闭":"已激活"}</td>
                                         <td>
-                                            <button type="button" class="btn btn-danger btn-sm btn_del col-sm-5 btn_del"
+                                            <c:if test="${batch.active==0}">
+                                            <button type="button" class="btn btn-success btn-sm col-sm-4 btn_active"
+                                                    id="mod_${batch.id}" Acticevalue="${batch.id}">激&nbsp&nbsp活
+                                        </button></c:if>
+                                            <c:if test="${batch.active==1}">
+                                                <button type="button" class="btn btn-warning btn-sm col-sm-4 btn_closs"
+                                                        id="mod_${batch.id}" ClossValue="${batch.id}">关&nbsp&nbsp闭
+                                                </button>
+                                            </c:if>
+                                            <button type="button" class="btn btn-danger btn-sm btn_del col-sm-4 btn_del"
                                                     id="del_${batch.id}">删&nbsp&nbsp除
                                             </button>
-                                            <button type="button" class="btn btn-primary btn-sm col-sm-5 btn_mod"
+                                            <button type="button" class="btn btn-primary btn-sm col-sm-4 btn_mod"
                                                     id="mod_${batch.id}">修&nbsp&nbsp改
                                             </button>
                                         </td>
@@ -379,7 +393,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">批次</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -408,14 +422,14 @@
                             <div class="form-group">
                                 <label>选衣开始时间</label>
                                 <div class="input-group date" id="reservationdate3" data-target-input="nearest">
-                                    <input type="date" name="registerStartDate" class="form-control ">
+                                    <input type="date" id="registerStartDate" name="registerStartDate" class="form-control ">
 
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label>选衣结束时间</label>
                                 <div class="input-group date" id="reservationdate4" data-target-input="nearest">
-                                    <input type="date" name="registerEndDate" class="form-control ">
+                                    <input type="date" id="registerEndDate" name="registerEndDate" class="form-control ">
 
                                 </div>
                             </div>
@@ -488,22 +502,37 @@
 <script src="${pageContext.request.contextPath}/static/js/my.js"></script>
 
 <script>
-    setHighlightAndMenuOpen("员工管理", "员工列表");
     $(function () {
-
-        $("#addOne").click(function () {
-            $.ajax({
-            url: "${pageContext.request.contextPath}/dictionary/listByType?type="+'DIFFICULTY',
-            type: "get",
-            dataType: "json",
-            success: function (result) {
-                $(result.data).each(function (index,item) {
-                    $("#difficultyLevel").append($("<option value='"+item.itemValue+"'>"+item.itemName+"</option>"))
-                })
+        flag = 1;
+        $.ajax({
+            url:"${pageContext.request.contextPath}/batch/selectActive?active=1",
+            type:"post",
+            dataType:"json",
+            success:function (result) {
+                if (result.data) {
+                    flag =0;
+                }
             }
         })
-            $("#info").modal("show");
 
+        $("#addOne").click(function () {
+            if (flag===0){
+                $("#difficultyLevel").empty()
+                $.ajax({
+                    url: "${pageContext.request.contextPath}/dictionary/listByType?type="+'DIFFICULTY',
+                    type: "get",
+                    dataType: "json",
+                    success: function (result) {
+                        $(result.data).each(function (index,item) {
+                            $("#difficultyLevel").append($("<option value='"+item.itemValue+"'>"+item.itemName+"</option>"))
+                        })
+                    }
+                })
+                $("#info").modal("show");
+                document.getElementById("batch-form").reset();
+            } else {
+                layer.msg("存在已激活的批次",{offset: '50%, 50%',icon:2,time:2000})
+            }
         })
         $("#${sessionScope.batchPageInfo.pageNum}").addClass("active");
         $("#pages").change(function () {
@@ -517,9 +546,6 @@
             }else {
                 layer.msg("请重新输入跳转页数", {time: 1000, offset: '50%, 50%'});
             }
-        })
-        $("#batch-add").click(function () {
-
         })
         $("#batch-save").click(function () {
             //一系列的验证   时间合理化
@@ -537,6 +563,69 @@
                         window.location="${pageContext.request.contextPath}/batch/list"
                     })
                 }})
+        })
+        $(".btn_active").click(function () {
+            if (flag===0){
+                var id = $(this).attr("Acticevalue");
+                layer.confirm("是否要激活本批次",{offset: '50%, 50%',icon:7,title:"提示"},function (index) {
+                    var active = 1;
+                    $.ajax({
+                        url:"${pageContext.request.contextPath}/batch/update?id="+id+"&active="+active,
+                        type:"post",
+                        dataType:"json",
+                        success:function (result) {
+                            layer.msg("激活成功",{offset: '50%, 50%',icon:1,time:2000},function () {
+                                window.location="${pageContext.request.contextPath}/batch/list?pageNo=${sessionScope.batchPageInfo.pageNum}&pageSize=${sessionScope.batchPageInfo.pageSize}";
+                            })
+                        }
+
+                    })
+                    layer.close(index);
+                })
+            }else{
+                layer.msg("存在已激活的批次",{offset: '50%, 50%',icon:2,time:2000})
+            }
+        })
+        $(".btn_closs").click(function () {
+            var id = $(this).attr("ClossValue");
+            layer.confirm("是否要关闭本批次",{offset: '50%, 50%',icon:7,title:"提示"},function (index) {
+                var active = 0;
+                $.ajax({
+                    url:"${pageContext.request.contextPath}/batch/update?id="+id+"&active="+active,
+                    type:"post",
+                    dataType:"json",
+                    success:function (result) {
+                        layer.msg("关闭成功",{offset: '50%, 50%',icon:1,time:2000},function () {
+                            window.location="${pageContext.request.contextPath}/batch/list?pageNo=${sessionScope.batchPageInfo.pageNum}&pageSize=${sessionScope.batchPageInfo.pageSize}";
+                        })
+                    }
+
+                })
+                layer.close(index);
+            })
+        })
+        $(".btn_mod").click(function () {
+            var row = $(this).parent().parent();
+            //显示模态框
+            $("#info").modal("show");
+            $("#difficultyLevel").empty()
+            $.ajax({
+                url: "${pageContext.request.contextPath}/dictionary/listByType?type="+'DIFFICULTY',
+                type: "get",
+                dataType: "json",
+                async:false,
+                success: function (result) {
+                    $(result.data).each(function (index,item) {
+                        $("#difficultyLevel").append($("<option value='"+item.itemValue+"'>"+item.itemName+"</option>"))
+                    })
+                }
+            })
+            $("#name").val($(row.find("td:eq(2)")).text())
+            $("#applicationStartDate").val($(row.find("td:eq(3)")).text())
+            $("#applicationEndDate").val($(row.find("td:eq(4)")).text())
+            $("#registerStartDate").val($(row.find("td:eq(5)")).text())
+            $("#registerEndDate").val($(row.find("td:eq(6)")).text())
+            $("#difficultyLevel").val($(row.find("td:eq(7)")).attr("difficultyValue"))
         })
     });
 

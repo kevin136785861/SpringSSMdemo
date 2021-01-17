@@ -15,6 +15,14 @@ public class SkuInfo {
 
     private Date gmtModified;
 
+    public SkuInfo() {
+    }
+
+    public SkuInfo(Long productId, String name) {
+        this.productId = productId;
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }

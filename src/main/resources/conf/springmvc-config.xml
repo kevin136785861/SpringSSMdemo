@@ -18,6 +18,10 @@
     </beans:bean>
     <!--如果controller处理不了,交给服务器处理(忽略静态资源)-->
     <mvc:default-servlet-handler/>
-
+    <!--配置文件上传对象-->
+    <beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <beans:property name="defaultEncoding" value="UTF-8"></beans:property>
+        <beans:property name="maxUploadSize" value="1024000"></beans:property>
+    </beans:bean>
 
 </beans:beans>

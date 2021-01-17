@@ -160,87 +160,29 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <!-- 使用 .nav-icon 类添加图标，
                          或使用 font-awesome 或其他任何图标字体库 -->
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link link-1st">
+                    <li class="nav-item">
+                        <a href="${pageContext.request.contextPath}/batch/list" class="nav-link link-1st">
                             <i class="nav-icon fas fa-edit"></i>
                             <p>
-                                用户管理
-                                <i class="fas fa-angle-left right"></i>
+                                批次列表
                             </p>
                         </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="${pageContext.request.contextPath}/viewpage?pageName=addUser.jsp" class="nav-link link-2nd">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>添加用户</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="${pageContext.request.contextPath}/batch/list" class="nav-link link-2nd">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>用户列表</p>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
                 </ul>
                 <c:if test="${sessionScope.loginUser.roleId == 2}">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <!-- 使用 .nav-icon 类添加图标，
                          或使用 font-awesome 或其他任何图标字体库 -->
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link link-1st">
+                    <li class="nav-item">
+                        <a href="${pageContext.request.contextPath}/product/toProductAddPage" class="nav-link link-1st">
                             <i class="nav-icon fas fa-edit"></i>
                             <p>
-                                学生管理
-                                <i class="fas fa-angle-left right"></i>
+                                寒衣添加
                             </p>
                         </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="${pageContext.request.contextPath}/emp?method=list" class="nav-link link-2nd">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>学生列表</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link link-2nd">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>添加学生</p>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
+
                 </ul>
-                </c:if>
-                <c:if test="${sessionScope.loginUser.roleId > 2}">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <!-- 使用 .nav-icon 类添加图标，
-                             或使用 font-awesome 或其他任何图标字体库 -->
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link link-1st">
-                                <i class="nav-icon fas fa-edit"></i>
-                                <p>
-                                    寒衣管理
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="${pageContext.request.contextPath}/emp?method=list" class="nav-link link-2nd">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>寒衣列表</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link link-2nd">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>添加寒衣</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
                 </c:if>
             </nav>
             <!-- /.sidebar-menu -->

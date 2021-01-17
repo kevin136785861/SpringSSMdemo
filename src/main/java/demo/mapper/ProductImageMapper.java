@@ -3,9 +3,11 @@ package demo.mapper;
 import demo.domain.ProductImage;
 import demo.domain.ProductImageExample;
 import java.util.List;
+
+import demo.mapper.extend.ImageExtendMapper;
 import org.apache.ibatis.annotations.Param;
 
-public interface ProductImageMapper {
+public interface ProductImageMapper extends ImageExtendMapper {
     long countByExample(ProductImageExample example);
 
     int deleteByExample(ProductImageExample example);

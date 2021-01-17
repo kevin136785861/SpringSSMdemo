@@ -17,6 +17,15 @@ public class ProductImage {
 
     private Date gmtModified;
 
+    public ProductImage() {
+    }
+
+    public ProductImage(Long productId, String name, String path) {
+        this.productId = productId;
+        this.name = name;
+        this.path = path;
+    }
+
     public Long getId() {
         return id;
     }

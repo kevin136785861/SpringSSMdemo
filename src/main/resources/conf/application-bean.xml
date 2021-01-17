@@ -33,6 +33,7 @@ http://www.springframework.org/schema/context ">
         <property name="mapperLocations">
             <list>
                 <value>classpath:mybatis/mapper/*.xml</value>
+                <value>classpath:mybatis/mapper/extend/*.xml</value>
             </list>
         </property>
     </bean>
