@@ -7,4 +7,5 @@ import java.util.List;
 public interface DictionaryService {
     Dictionary getDictionaryNameByLevel(String level);
     List<Dictionary> listByType(String type);
+    String getNameByTypeAndValue(String type, String value);
 }

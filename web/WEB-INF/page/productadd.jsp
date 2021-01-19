@@ -147,7 +147,6 @@
     <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-
 <!-- jQuery -->
 <script src="${pageContext.request.contextPath}/static/adminlte/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->

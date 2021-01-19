@@ -471,7 +471,8 @@
 <!-- Bootstrap4 Duallistbox -->
 <script src="${pageContext.request.contextPath}/static/adminlte/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
 <!-- InputMask -->
-<script src="${pageContext.request.contextPath}/static/adminlte/plugins/moment/moment.min.js"></script><script src="${pageContext.request.contextPath}/static/adminlte/plugins/moment/locale/zh-cn.js"></script>
+<script src="${pageContext.request.contextPath}/static/adminlte/plugins/moment/moment.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/adminlte/plugins/moment/locale/zh-cn.js"></script>
 <script src="${pageContext.request.contextPath}/static/adminlte/plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
 <!-- date-range-picker -->
 <script src="${pageContext.request.contextPath}/static/adminlte/plugins/daterangepicker/daterangepicker.js"></script>
@@ -485,23 +486,12 @@
 <script src="${pageContext.request.contextPath}/static/adminlte/dist/js/adminlte.min.js"></script>
 <!-- 用于演示 AdminLTE  -->
 <script src="${pageContext.request.contextPath}/static/adminlte/dist/js/demo.js"></script>
-<script src="${pageContext.request.contextPath}/static/layer/layer.js"></script>
-<!-- jQuery -->
-<script src="${pageContext.request.contextPath}/static/adminlte/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap -->
-<script src="${pageContext.request.contextPath}/static/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE -->
-<script src="${pageContext.request.contextPath}/static/adminlte/dist/js/adminlte.js"></script>
-
-<!-- OPTIONAL SCRIPTS -->
-<script src="${pageContext.request.contextPath}/static/adminlte/plugins/chart.js/Chart.min.js"></script>
-<script src="${pageContext.request.contextPath}/static/adminlte/dist/js/demo.js"></script>
-<script src="${pageContext.request.contextPath}/static/adminlte/dist/js/pages/dashboard3.js"></script>
 <script src="${pageContext.request.contextPath}/static/layui/lay/modules/layer.js"></script>
 <!-- 自己的js -->
 <script src="${pageContext.request.contextPath}/static/js/my.js"></script>
 
 <script>
+
     $(function () {
         flag = 1;
         $.ajax({

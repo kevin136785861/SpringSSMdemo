@@ -21,6 +21,21 @@ public class ProductInfo {
 
     private String description;
 
+    @Override
+    public String toString() {
+        return "ProductInfo{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", productNumber='" + productNumber + '\'' +
+                ", batchId=" + batchId +
+                ", gender='" + gender + '\'' +
+                ", isDeleted=" + isDeleted +
+                ", gmtCreated=" + gmtCreated +
+                ", gmtModified=" + gmtModified +
+                ", description='" + description + '\'' +
+                '}';
+    }
+
     public Long getId() {
         return id;
     }

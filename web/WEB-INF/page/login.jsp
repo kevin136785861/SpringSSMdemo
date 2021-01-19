@@ -32,10 +32,10 @@
         <div class="card-body login-card-body">
             <p class="login-box-msg">帐户登录</p>
 
-            <form action="${pageContext.request.contextPath}/login" method="post">
+            <form action="${pageContext.request.contextPath}/whitelist/login" method="post">
                 <%--用户名/邮箱--%>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="用户名" name="username">
+                    <input type="text" class="form-control" placeholder="姓  名" name="username">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-envelope"></span>
@@ -44,7 +44,7 @@
                 </div>
                 <%--密码--%>
                 <div class="input-group mb-3">
-                    <input type="password" class="form-control" placeholder="密  码" name="password">
+                    <input type="text" class="form-control" placeholder="学   号" name="sn">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>
@@ -54,12 +54,10 @@
                 <p style="color: red">${requestScope.msg}</p>
                 <div class="row">
                     <div class="col-8">
-                        <div class="icheck-primary">
-                            <input type="checkbox" id="remember">
-                            <label for="remember">
-                                记住我
-                            </label>
-                        </div>
+                        <select id="roleId" name="roleId" class="form-control">
+                            <option value="1">学生</option>
+                            <option value="2">教师</option>
+                        </select>
                     </div>
                     <!-- /.col -->
                     <div class="col-4">
@@ -69,23 +67,8 @@
                 </div>
             </form>
 
-            <div class="social-auth-links text-center mb-3">
-                <p>- 或 -</p>
-                <a href="#" class="btn btn-block btn-primary">
-                    <i class="fab fa-facebook mr-2"></i> 通过 Facebook 登录
-                </a>
-                <a href="#" class="btn btn-block btn-danger">
-                    <i class="fab fa-google-plus mr-2"></i> 通过 Google+ 登录
-                </a>
-            </div>
             <!-- /.social-auth-links -->
 
-            <p class="mb-1">
-                <a href="forgot-password.html">忘记密码</a>
-            </p>
-            <p class="mb-0">
-                <a href="register.html" class="text-center">注册新会员</a>
-            </p>
         </div>
         <!-- /.login-card-body -->
     </div>

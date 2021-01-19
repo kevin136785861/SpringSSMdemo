@@ -3,9 +3,11 @@ package demo.mapper;
 import demo.domain.ApplicationInfo;
 import demo.domain.ApplicationInfoExample;
 import java.util.List;
+
+import demo.mapper.extend.ApplicationExtendMapper;
 import org.apache.ibatis.annotations.Param;
 
-public interface ApplicationInfoMapper {
+public interface ApplicationInfoMapper extends ApplicationExtendMapper {
     long countByExample(ApplicationInfoExample example);
 
     int deleteByExample(ApplicationInfoExample example);

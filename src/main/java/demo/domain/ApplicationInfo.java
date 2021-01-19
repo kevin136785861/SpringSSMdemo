@@ -1,8 +1,12 @@
 package demo.domain;
 
+import demo.domain.extem.ApplicationExtend;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDate;
 import java.util.Date;
 
-public class ApplicationInfo {
+public class ApplicationInfo extends ApplicationExtend {
     private Long id;
 
     private Long batchId;
@@ -40,10 +44,10 @@ public class ApplicationInfo {
     private Integer currentNodeCode;
 
     private String status;
-
-    private Date gmtCreated;
-
-    private Date gmtModified;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate gmtCreated;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate gmtModified;
 
     public Long getId() {
         return id;
@@ -197,19 +201,19 @@ public class ApplicationInfo {
         this.status = status == null ? null : status.trim();
     }
 
-    public Date getGmtCreated() {
+    public LocalDate getGmtCreated() {
         return gmtCreated;
     }
 
-    public void setGmtCreated(Date gmtCreated) {
+    public void setGmtCreated(LocalDate gmtCreated) {
         this.gmtCreated = gmtCreated;
     }
 
-    public Date getGmtModified() {
+    public LocalDate getGmtModified() {
         return gmtModified;
     }
 
-    public void setGmtModified(Date gmtModified) {
+    public void setGmtModified(LocalDate gmtModified) {
         this.gmtModified = gmtModified;
     }
 }

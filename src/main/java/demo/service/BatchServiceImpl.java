@@ -2,8 +2,11 @@ package demo.service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import demo.common.utils.SessionUntil;
 import demo.domain.Batch;
 import demo.domain.BatchExample;
+import demo.domain.KnrdInfo;
+import demo.domain.Whitelist;
 import demo.mapper.BatchMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,13 +14,16 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static demo.common.utils.Constant.ACTIVE_FLAG_1;
-import static demo.common.utils.Constant.DELETE_FLAG_0;
+import static demo.common.utils.Constant.*;
 
 @Service
 public class BatchServiceImpl implements BatchService {
     @Autowired
     private BatchMapper batchMapper;
+    @Autowired
+    private DictionaryService dictionaryService;
+    @Autowired
+    private KnrdService knrdService;
 
     @Override
     public List<Batch> list(Integer pageNo, Integer pageSize){
@@ -85,5 +91,27 @@ public class BatchServiceImpl implements BatchService {
             List<Batch> batchesNew = batchMapper.selectByExample(example);
             return batchesNew.size()>0?batches.get(0):new Batch();
         }
+    }
+    @Override
+    public Batch activeBatch() {
+        BatchExample example = new BatchExample();
+        example.createCriteria().andDeletedEqualTo(DELETE_FLAG_0).andActiveEqualTo(ACTIVE_FLAG_1);
+        List<Batch> batches = batchMapper.selectByExample(example);
+        return batches.size()>0?batches.get(0):null;
+    }
+
+    @Override
+    public Boolean isSuitable() {
+        Batch batch = activeBatch();//BKN
+        batch.setDifficultyName(dictionaryService.getNameByTypeAndValue(DICTIONARY_TYPE_DIFFICULTY,batch.getDifficultyLevel()));//不困难
+        Whitelist curUser = SessionUntil.getLoginUser();
+        //获取学生的困难等级
+        KnrdInfo knrd = knrdService.selectByUser(curUser);
+        System.out.println(knrd);
+        if(batch.getDifficultyName().equals(knrd.getPovertyLevel())){
+            //符合
+            return true;
+        }
+        return false;
     }
 }

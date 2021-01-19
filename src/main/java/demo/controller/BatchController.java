@@ -61,6 +61,7 @@ public class BatchController {
     @RequestMapping(value = "/selectActive" , method = RequestMethod.POST)
     @ResponseBody
     public JsonResult selectActive(@RequestParam(value = "active")Integer active){
+
         int i = batchService.selectActive(active);
         if (i==1){
             return JsonResult.ok(false);
@@ -99,5 +100,21 @@ public class BatchController {
         map.put("list",batchList);
         map.put("curBatch",batch);
         return JsonResult.ok(map);
+    }
+
+    @RequestMapping(value = "/isSuitable", method = RequestMethod.GET)
+    @ResponseBody
+    public JsonResult isSuitable() {
+        return JsonResult.ok(batchService.isSuitable());
+    }
+    @RequestMapping(value = "/activeBatch", method = RequestMethod.GET)
+    @ResponseBody
+    public JsonResult activeBatch() {
+        Batch batch = batchService.activeBatch();
+        System.out.println(batch);
+        if (batch==null){
+            return JsonResult.ok("123");
+        }
+        return JsonResult.ok(batch);
     }
 }

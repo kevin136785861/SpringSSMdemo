@@ -27,4 +27,11 @@ public class DictionaryServiceImpl implements DictionaryService {
         example.createCriteria().andTypeEqualTo(type).andItemNameIsNotNull();
         return dm.selectByExample(example);
     }
+    @Override
+    public String getNameByTypeAndValue(String type, String value) {
+        DictionaryExample example = new DictionaryExample();
+        example.createCriteria().andTypeEqualTo(type).andItemValueEqualTo(value);
+        List<Dictionary> dictionaries = dm.selectByExample(example);
+        return dictionaries.size()>0?dictionaries.get(0).getItemName():null;
+    }
 }

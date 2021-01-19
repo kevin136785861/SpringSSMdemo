@@ -5,5 +5,7 @@ import demo.domain.Whitelist;
 
 
 public interface LoginService {
-    Whitelist login(String username, String password);
+    Whitelist studentLogin(String username, String sn);
+    Whitelist teacherLogin(String username,String sn);
+    Whitelist login(String sn);
 }

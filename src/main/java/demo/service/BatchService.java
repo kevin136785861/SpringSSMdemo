@@ -13,4 +13,6 @@ public interface BatchService {
     int selectActive(Integer active);
     List<Batch> listByAjax();
     Batch curBatch();
+    Boolean isSuitable();
+    Batch activeBatch();
 }
