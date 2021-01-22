@@ -56,6 +56,8 @@
         <table tableName="wcss_role_flow_setting" domainObjectName="RoleFlow"/>
         <table tableName="wcss_sku" domainObjectName="SkuInfo"/>
         <table tableName="wcss_whitelist_setting" domainObjectName="Whitelist"/>
+        <table tableName="wcss_user_role" domainObjectName="UserRole"/>
+        <table tableName="wcss_role" domainObjectName="Role"/>
 
 
     </context>

@@ -1,8 +1,10 @@
 package demo.domain;
 
+import demo.domain.extem.WhiteListExtend;
+
 import java.util.Date;
 
-public class Whitelist {
+public class Whitelist extends WhiteListExtend {
     private Long id;
 
     private String sn;
@@ -81,5 +83,13 @@ public class Whitelist {
 
     public void setGmtModified(Date gmtModified) {
         this.gmtModified = gmtModified;
+    }
+
+    public Whitelist() {
+    }
+
+    public Whitelist(String sn, String name) {
+        this.sn = sn;
+        this.name = name;
     }
 }

@@ -3,9 +3,11 @@ package demo.mapper;
 import demo.domain.ProductInfo;
 import demo.domain.ProductInfoExample;
 import java.util.List;
+
+import demo.mapper.extend.ProductExtendMapper;
 import org.apache.ibatis.annotations.Param;
 
-public interface ProductInfoMapper {
+public interface ProductInfoMapper extends ProductExtendMapper {
     long countByExample(ProductInfoExample example);
 
     int deleteByExample(ProductInfoExample example);

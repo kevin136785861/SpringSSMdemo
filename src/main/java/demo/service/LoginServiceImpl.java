@@ -2,10 +2,7 @@ package demo.service;
 
 
 import demo.domain.*;
-import demo.mapper.KnrdInfoMapper;
-import demo.mapper.StudentInfoMapper;
-import demo.mapper.UserManageMapper;
-import demo.mapper.WhitelistMapper;
+import demo.mapper.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +19,8 @@ public class LoginServiceImpl implements LoginService {
     private UserManageMapper umm;
     @Autowired
     private KnrdInfoMapper knrdInfoMapper;
+    @Autowired
+    private RoleMapper roleMapper;
     @Override
     public Whitelist studentLogin(String username, String sn) {
         StudentInfoExample sie = new StudentInfoExample();

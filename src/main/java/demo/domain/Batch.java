@@ -1,7 +1,6 @@
 package demo.domain;
 
 import demo.domain.extem.BatchExten;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -10,13 +9,13 @@ public class Batch extends BatchExten {
     private Long id;
 
     private String name;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+
     private LocalDate applicationStartDate;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+
     private LocalDate applicationEndDate;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+
     private LocalDate registerStartDate;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+
     private LocalDate registerEndDate;
 
     private String difficultyLevel;
@@ -31,23 +30,6 @@ public class Batch extends BatchExten {
 
     public Long getId() {
         return id;
-    }
-
-    @Override
-    public String toString() {
-        return "Batch{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", applicationStartDate=" + applicationStartDate +
-                ", applicationEndDate=" + applicationEndDate +
-                ", registerStartDate=" + registerStartDate +
-                ", registerEndDate=" + registerEndDate +
-                ", difficultyLevel='" + difficultyLevel + '\'' +
-                ", deleted=" + deleted +
-                ", active=" + active +
-                ", gmtCreated=" + gmtCreated +
-                ", gmtModified=" + gmtModified +
-                '}';
     }
 
     public void setId(Long id) {

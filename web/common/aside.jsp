@@ -27,6 +27,13 @@
                     <option value="0121201010922">马得福（学生）</option>
                 </select>
             </li>
+            <li class="nav-item" style="float: right">
+                <select name="" id="roles" class="form-control">
+                    <c:forEach items="${loginUser.roles}" var="role">
+                        <option value="${role.id}">${role.name}</option>
+                    </c:forEach>
+                </select>
+            </li>
         </ul>
 
 
@@ -86,6 +93,14 @@
                                 </a>
                             </li>
                         </ul>
+                        <ul class="nav nav-treeview" style="display: none;">
+                            <li class="nav-item">
+                                <a href="${pageContext.request.contextPath}/product/listByStudent" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>衣服列表</p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
                 <c:if test="${sessionScope.loginUser.roleId >= 1}">
@@ -140,6 +155,45 @@
                                         <p>申请列表</p>
                                     </a>
                                 </li>
+                                    <li class="nav-item">
+                                        <a href="${pageContext.request.contextPath}/application/getSta" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>申请统计</p>
+                                        </a>
+                                    </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <!-- 使用 .nav-icon 类添加图标，
+                             或使用 font-awesome 或其他任何图标字体库 -->
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-edit"></i>
+                                <p>
+                                    用户管理
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview" style="display: none;">
+                                <li class="nav-item">
+                                    <a href="${pageContext.request.contextPath}/whitelist/list" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>用户列表</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="${pageContext.request.contextPath}/application/list" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>申请列表</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="${pageContext.request.contextPath}/application/getSta" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>申请统计</p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                     </ul>
@@ -154,6 +208,7 @@
 <script src="${pageContext.request.contextPath}/static/adminlte/plugins/jquery/jquery.min.js"></script>
 <script>
     $(function () {
+        $("#roles").val(${sessionScope.loginUser.roleId})
         $("#user").val(${sessionScope.loginUser.sn})
         $("#user").change(function () {
             $.ajax({
@@ -167,6 +222,19 @@
                 success: function (res) {
                     if(res.data){
                         location.reload()
+                    }
+                }
+            })
+        })
+        $("#roles").change(function () {
+            $.ajax({
+                url: "${pageContext.request.contextPath}/whitelist/changeRole",
+                type: "post",
+                data: {roleId: $(this).val()},
+                dataType: "json",
+                success: function (res) {
+                    if(res.data){
+                        window.location = "${pageContext.request.contextPath}/whitelist/main"
                     }
                 }
             })
